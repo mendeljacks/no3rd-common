@@ -1,7 +1,8 @@
 export type No3rdJWT = {
     account_id: number
     vendor_ids: number[]
-    role_ids: number[]
+    role_ids: number[],
+    iat: number
 }
 
 export type LoginData = {
