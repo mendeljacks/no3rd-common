@@ -7,7 +7,7 @@ export type No3rdJWT = {
 export type LoginData = {
     token: string
     jwt: No3rdJWT
-    perms: {
+    permissions: {
         id: number
         label: string
     }[]
