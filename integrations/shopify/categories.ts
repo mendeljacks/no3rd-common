@@ -22,10 +22,14 @@ export const category_to_smart_collection = no3rd_category => {
         title: no3rd_category.label,
         handle: string_to_slug(no3rd_category.label),
         disjunctive: false, //disjunctive = or
-        image: {
-            src: no3rd_category.image_url,
-            alt: string_to_slug(no3rd_category.label)
-        },
+        ...(no3rd_category.image_url
+            ? {
+                  image: {
+                      src: no3rd_category.image_url,
+                      alt: string_to_slug(no3rd_category.label)
+                  }
+              }
+            : {}),
         rules: [
             {
                 column: 'variant_inventory',
@@ -33,6 +37,6 @@ export const category_to_smart_collection = no3rd_category => {
                 condition: '0'
             }
         ],
-        published: no3rd_category.visible
+        published: !!no3rd_category.visible
     }
 }
