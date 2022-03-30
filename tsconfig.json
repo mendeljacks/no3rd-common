@@ -11,5 +11,5 @@
     "noImplicitAny": false
   },
   "include": ["./"],
-  "exclude": ["node_modules", ".husky"]
+  "exclude": ["node_modules", ".husky", "build"]
 }
