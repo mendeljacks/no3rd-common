@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNEXT",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./build",
+    "strict": true,
+    "strictNullChecks": true,
+    "lib": ["ES2019", "DOM"],
+    "downlevelIteration": true,
+    "noImplicitAny": false
+  },
+  "include": ["./"],
+  "exclude": ["node_modules", ".husky"]
+}
