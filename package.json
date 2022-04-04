@@ -1,6 +1,6 @@
 {
     "name": "no3rd-common",
-    "version": "1.0.17",
+    "version": "1.0.18",
     "description": "Business logic and utilities for use accross no3rd projects",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,5 +11,9 @@
     "license": "ISC",
     "devDependencies": {
         "husky": "^7.0.4"
+    },
+    "dependencies": {
+        "buffer": "^6.0.3",
+        "walmart_marketplace": "^1.0.11"
     }
 }
