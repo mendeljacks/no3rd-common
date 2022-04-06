@@ -44,14 +44,14 @@ export const sync_trackings = async (
     axios: AxiosFunction,
     walmart_auth: any,
     walmart_orders: WalmartOrder[],
-    options: Options
+    integration_id: number
 ) => {
     // Fetch
     const order_names = walmart_orders.map((el) => el.purchaseOrderId)
     const no3rd_orders = await get_no3rd_orders_by_name_with_trackings(
         no3rd_query,
         order_names,
-        options.integration_id
+        integration_id
     )
 
     const {
@@ -133,6 +133,8 @@ export const sync_trackings = async (
         const response: { data: { list: walmart.shipping_updates_ca_type } } =
             await axios(request)
     }
+
+    return `Synced tracking for ${walmart_orders.length} orders`
 }
 
 type WalmartOrderLines = {

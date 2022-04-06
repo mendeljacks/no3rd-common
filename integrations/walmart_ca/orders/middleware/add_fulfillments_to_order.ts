@@ -1,4 +1,4 @@
-import { deep_get } from 'yay_json'
+import { assoc_path_mutate } from 'yay_json/build/assoc_path_mutate'
 //import { api_store } from '../../../../../stores/api_store'
 
 export const add_fulfillments_to_orders = async (
@@ -28,6 +28,6 @@ export const add_fulfillments_to_orders = async (
         const value = {
             inventory_adjustments: [inventory_adjustment]
         }
-        deep_get([...order_item_path, 'order_item_fulfillments', 0], value, orders)
+        assoc_path_mutate([...order_item_path, 'order_item_fulfillments', 0], value, orders)
     }
 }

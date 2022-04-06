@@ -1,6 +1,6 @@
 {
     "name": "no3rd-common",
-    "version": "1.0.19",
+    "version": "1.0.20",
     "description": "Business logic and utilities for use accross no3rd projects",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,6 +16,6 @@
         "buffer": "^6.0.3",
         "dayjs": "^1.11.0",
         "walmart_marketplace": "^1.0.11",
-        "yay_json": "^1.0.17"
+        "yay_json": "^1.0.19"
     }
 }
