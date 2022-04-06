@@ -134,7 +134,7 @@ export const sync_trackings = async (
             await axios(request)
     }
 
-    return `Synced tracking for ${walmart_orders.length} orders`
+    return `Synced tracking for ${matched_orders.length} orders`
 }
 
 type WalmartOrderLines = {
