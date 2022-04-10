@@ -33,7 +33,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -143,7 +144,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "label": {
       "data_type": "varchar",
@@ -228,7 +230,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -317,7 +320,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "label": {
       "data_type": "varchar",
@@ -409,7 +413,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "last_name": {
       "data_type": "varchar",
@@ -494,6 +499,102 @@ export const orma_schema = {
       }
     ]
   },
+  "attachments": {
+    "$comment": "",
+    "created_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "primary_key": true,
+      "character_count": 10,
+      "auto_increment": true
+    },
+    "resource_id": {
+      "data_type": "varchar",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 20
+    },
+    "updated_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "url": {
+      "data_type": "varchar",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 45
+    },
+    "vendor_id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 10,
+      "references": {
+        "vendors": {
+          "id": {}
+        }
+      }
+    },
+    "$indexes": [
+      {
+        "index_name": "fk_attachments_vendors",
+        "is_unique": false,
+        "fields": [
+          "vendor_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "url_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "url"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      }
+    ]
+  },
   "attributes": {
     "$comment": "A list of attributes available to describe products",
     "created_at": {
@@ -510,7 +611,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "label": {
       "data_type": "varchar",
@@ -600,7 +702,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "order_item_id": {
       "data_type": "int",
@@ -699,7 +802,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "is_shipped": {
       "data_type": "tinyint",
@@ -792,6 +896,122 @@ export const orma_schema = {
       }
     ]
   },
+  "cashflows": {
+    "$comment": "",
+    "amount": {
+      "data_type": "decimal",
+      "not_null": true,
+      "character_count": 10,
+      "decimal_places": 2
+    },
+    "created_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "currency_id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 10,
+      "references": {
+        "currencies": {
+          "id": {}
+        }
+      }
+    },
+    "id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "primary_key": true,
+      "character_count": 10,
+      "auto_increment": true
+    },
+    "paid": {
+      "data_type": "tinyint",
+      "character_count": 3,
+      "default": "0"
+    },
+    "reason": {
+      "data_type": "varchar",
+      "character_count": 45
+    },
+    "resource_id": {
+      "data_type": "varchar",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 20
+    },
+    "updated_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "vendor_id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 10,
+      "references": {
+        "vendors": {
+          "id": {}
+        }
+      }
+    },
+    "$indexes": [
+      {
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "payfk2_idx",
+        "is_unique": false,
+        "fields": [
+          "vendor_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "payfk3_idx",
+        "is_unique": false,
+        "fields": [
+          "currency_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      }
+    ]
+  },
   "categories": {
     "$comment": "A list of categories to categorize variants",
     "created_at": {
@@ -804,7 +1024,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "image_url": {
       "data_type": "varchar",
@@ -930,7 +1151,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "is_filter": {
       "data_type": "tinyint",
@@ -1050,7 +1272,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -1227,7 +1450,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -1307,7 +1531,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -1396,7 +1621,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "order_item_cancellation_id": {
       "data_type": "int",
@@ -1506,7 +1732,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "order_item_id": {
       "data_type": "int",
@@ -1615,7 +1842,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "reason": {
       "data_type": "varchar",
@@ -1736,7 +1964,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "private_label_id": {
       "data_type": "int",
@@ -1846,7 +2075,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "recall_id": {
       "data_type": "int",
@@ -1956,7 +2186,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "refund_id": {
       "data_type": "int",
@@ -2056,7 +2287,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "relinquish_id": {
       "data_type": "int",
@@ -2156,7 +2388,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -2250,7 +2483,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -2361,7 +2595,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -2445,7 +2680,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "image_id": {
       "data_type": "int",
@@ -2554,7 +2790,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "original_url": {
       "data_type": "varchar",
@@ -2653,7 +2890,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "integration_id": {
       "data_type": "int",
@@ -2765,7 +3003,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "integration_id": {
       "data_type": "int",
@@ -2859,7 +3098,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "integration_id": {
       "data_type": "int",
@@ -2953,7 +3193,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "integration_id": {
       "data_type": "int",
@@ -3030,6 +3271,112 @@ export const orma_schema = {
       }
     ]
   },
+  "integration_ups": {
+    "$comment": "",
+    "access_key": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 200
+    },
+    "created_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "primary_key": true,
+      "character_count": 10,
+      "auto_increment": true
+    },
+    "integration_id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 10,
+      "references": {
+        "integrations": {
+          "id": {}
+        }
+      }
+    },
+    "password": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 200
+    },
+    "resource_id": {
+      "data_type": "varchar",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 20
+    },
+    "updated_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "username": {
+      "data_type": "varchar",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 200
+    },
+    "$indexes": [
+      {
+        "index_name": "fk_inups_inte_idx",
+        "is_unique": false,
+        "fields": [
+          "integration_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "username_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "username"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      }
+    ]
+  },
   "integration_walmart_cas": {
     "$comment": "",
     "created_at": {
@@ -3042,7 +3389,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "integration_id": {
       "data_type": "int",
@@ -3136,7 +3484,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "name": {
       "data_type": "varchar",
@@ -3230,7 +3579,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "quantity": {
       "data_type": "int",
@@ -3389,7 +3739,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "last_run": {
       "data_type": "timestamp"
@@ -3474,62 +3825,6 @@ export const orma_schema = {
       }
     ]
   },
-  "nc_evolutions": {
-    "$comment": "",
-    "batch": {
-      "data_type": "int",
-      "character_count": 10
-    },
-    "checksum": {
-      "data_type": "varchar",
-      "character_count": 255
-    },
-    "created": {
-      "data_type": "datetime"
-    },
-    "created_at": {
-      "data_type": "datetime"
-    },
-    "description": {
-      "data_type": "varchar",
-      "character_count": 255
-    },
-    "id": {
-      "data_type": "int",
-      "not_null": true,
-      "indexed": true,
-      "primary_key": true,
-      "character_count": 10
-    },
-    "status": {
-      "data_type": "int",
-      "character_count": 10
-    },
-    "title": {
-      "data_type": "varchar",
-      "not_null": true,
-      "character_count": 255
-    },
-    "titleDown": {
-      "data_type": "varchar",
-      "character_count": 255
-    },
-    "updated_at": {
-      "data_type": "datetime"
-    },
-    "$indexes": [
-      {
-        "index_name": "PRIMARY",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      }
-    ]
-  },
   "order_3pl_info": {
     "$comment": "",
     "created_at": {
@@ -3546,7 +3841,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "order_id": {
       "data_type": "int",
@@ -3639,7 +3935,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "order_item_id": {
       "data_type": "int",
@@ -3748,7 +4045,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "order_item_id": {
       "data_type": "int",
@@ -3846,7 +4144,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "inventory_adjustment_id": {
       "data_type": "int",
@@ -3983,7 +4282,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "order_item_id": {
       "data_type": "int",
@@ -4091,7 +4391,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "order_item_id": {
       "data_type": "int",
@@ -4191,7 +4492,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "order_id": {
       "data_type": "int",
@@ -4300,7 +4602,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "order_id": {
       "data_type": "int",
@@ -4436,7 +4739,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "integration_id": {
       "data_type": "int",
@@ -4566,8 +4870,7 @@ export const orma_schema = {
         "index_name": "name_UNIQUE",
         "is_unique": true,
         "fields": [
-          "name",
-          "integration_id"
+          "name"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4597,24 +4900,18 @@ export const orma_schema = {
   },
   "payments": {
     "$comment": "",
-    "amount": {
-      "data_type": "decimal",
-      "not_null": true,
-      "character_count": 10,
-      "decimal_places": 2
-    },
     "created_at": {
       "data_type": "timestamp",
       "not_null": true,
       "default": "CURRENT_TIMESTAMP"
     },
-    "currency_id": {
+    "from_cashflow_id": {
       "data_type": "int",
       "not_null": true,
       "indexed": true,
       "character_count": 10,
       "references": {
-        "currencies": {
+        "cashflows": {
           "id": {}
         }
       }
@@ -4624,16 +4921,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
-    },
-    "paid": {
-      "data_type": "tinyint",
-      "character_count": 3,
-      "default": "0"
-    },
-    "reason": {
-      "data_type": "varchar",
-      "character_count": 45
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -4641,48 +4930,48 @@ export const orma_schema = {
       "indexed": true,
       "character_count": 20
     },
-    "updated_at": {
-      "data_type": "timestamp",
-      "not_null": true,
-      "default": "CURRENT_TIMESTAMP"
-    },
-    "vendor_id": {
+    "to_cashflow_id": {
       "data_type": "int",
       "not_null": true,
       "indexed": true,
       "character_count": 10,
       "references": {
-        "vendors": {
+        "cashflows": {
           "id": {}
         }
       }
     },
+    "updated_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
     "$indexes": [
+      {
+        "index_name": "fk_payments_cashflows_idx",
+        "is_unique": false,
+        "fields": [
+          "from_cashflow_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_payments_to_idx",
+        "is_unique": false,
+        "fields": [
+          "to_cashflow_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
       {
         "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "payfk2_idx",
-        "is_unique": false,
-        "fields": [
-          "vendor_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "payfk3_idx",
-        "is_unique": false,
-        "fields": [
-          "currency_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4726,7 +5015,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "product_id": {
       "data_type": "int",
@@ -4859,7 +5149,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -5059,7 +5350,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "order_item_return_id": {
       "data_type": "int",
@@ -5138,7 +5430,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "order_item_return_id": {
       "data_type": "int",
@@ -5223,7 +5516,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "order_item_return_id": {
       "data_type": "int",
@@ -5311,7 +5605,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "package_received_date": {
       "data_type": "datetime"
@@ -5403,7 +5698,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -5492,7 +5788,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "quantity": {
       "data_type": "int",
@@ -5608,7 +5905,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "inventory_adjustment_id": {
       "data_type": "int",
@@ -5726,7 +6024,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "is_problem": {
       "data_type": "tinyint",
@@ -5950,7 +6249,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "pdf_url": {
       "data_type": "varchar",
@@ -5984,7 +6284,6 @@ export const orma_schema = {
     },
     "tracking_number": {
       "data_type": "varchar",
-      "not_null": true,
       "indexed": true,
       "character_count": 450
     },
@@ -6069,7 +6368,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -6228,7 +6528,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "updated_at": {
       "data_type": "timestamp",
@@ -6327,7 +6628,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -6389,6 +6691,332 @@ export const orma_schema = {
       }
     ]
   },
+  "tracking_info": {
+    "$comment": "",
+    "attachment_id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 10,
+      "references": {
+        "attachments": {
+          "id": {}
+        }
+      }
+    },
+    "created_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "primary_key": true,
+      "character_count": 10,
+      "auto_increment": true
+    },
+    "resource_id": {
+      "data_type": "varchar",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 20
+    },
+    "service_type": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 45
+    },
+    "tracking_number": {
+      "data_type": "varchar",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 450
+    },
+    "updated_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "$indexes": [
+      {
+        "index_name": "fk_tracking_attachment_idx",
+        "is_unique": false,
+        "fields": [
+          "attachment_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "tracking_number_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "tracking_number"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      }
+    ]
+  },
+  "ups_label_info": {
+    "$comment": "",
+    "created_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "primary_key": true,
+      "character_count": 10,
+      "auto_increment": true
+    },
+    "package.dimensions.height": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "package.dimensions.length": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "package.dimensions.unit_of_measurement.code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "package.dimensions.width": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "package.package_weight.unit_of_measurement.code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "package.package_weight.weight": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "package.packaging_type.code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "resource_id": {
+      "data_type": "varchar",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 20
+    },
+    "service.code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "ship_from.address.address_line": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "ship_from.address.city": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "ship_from.address.country_code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "ship_from.address.postal_code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "ship_from.address.state_province_code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "ship_from.name": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "ship_to.address.address_line": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "ship_to.address.city": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "ship_to.address.country_code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "ship_to.address.postal_code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "ship_to.address.state_province_code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "ship_to.name": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "shipment_total_weight.unit_of_measurement.code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "shipment_total_weight.weight": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "shipper.address.address_line": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "shipper.address.city": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "shipper.address.country_code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "shipper.address.postal_code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "shipper.address.state_province_code": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "shipper.name": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "shipper.shipper_number": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 100
+    },
+    "tracking_info_id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 10,
+      "references": {
+        "tracking_info": {
+          "id": {}
+        }
+      }
+    },
+    "updated_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "$indexes": [
+      {
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "tracking_info_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "tracking_info_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      }
+    ]
+  },
   "variant_has_attributes": {
     "$comment": "A list of which attributes are recommended to fill in for each variant",
     "attribute_id": {
@@ -6416,7 +7044,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -6527,7 +7156,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "is_hero": {
       "data_type": "tinyint",
@@ -6652,7 +7282,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "integration_id": {
       "data_type": "int",
@@ -6771,7 +7402,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "integration_id": {
       "data_type": "int",
@@ -6913,7 +7545,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "price": {
       "data_type": "decimal",
@@ -7056,7 +7689,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "integration_id": {
       "data_type": "int",
@@ -7224,7 +7858,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "length": {
       "data_type": "decimal",
@@ -7380,7 +8015,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "resource_id": {
       "data_type": "varchar",
@@ -7519,7 +8155,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "institution_number": {
       "data_type": "varchar",
@@ -7613,6 +8250,420 @@ export const orma_schema = {
       }
     ]
   },
+  "walmart_ca_attributes": {
+    "$comment": "",
+    "attribute_id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 10,
+      "references": {
+        "attributes": {
+          "id": {}
+        }
+      }
+    },
+    "created_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "description": {
+      "data_type": "varchar",
+      "character_count": 2000
+    },
+    "display_name": {
+      "data_type": "varchar",
+      "character_count": 50
+    },
+    "enumeration": {
+      "data_type": "varchar",
+      "character_count": 2000,
+      "comment": "JSON stringified values that the attribute can take"
+    },
+    "group_name": {
+      "data_type": "varchar",
+      "character_count": 50
+    },
+    "id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "primary_key": true,
+      "character_count": 10,
+      "auto_increment": true
+    },
+    "max_length": {
+      "data_type": "int",
+      "character_count": 10
+    },
+    "min_length": {
+      "data_type": "int",
+      "character_count": 10
+    },
+    "name": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 50
+    },
+    "resource_id": {
+      "data_type": "varchar",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 20
+    },
+    "simple_type": {
+      "data_type": "varchar",
+      "character_count": 45
+    },
+    "updated_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "$indexes": [
+      {
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "uq_aiwc_combo",
+        "is_unique": true,
+        "fields": [
+          "attribute_id",
+          "name"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      }
+    ]
+  },
+  "walmart_ca_categories": {
+    "$comment": "",
+    "category": {
+      "data_type": "varchar",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 50
+    },
+    "created_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "primary_key": true,
+      "character_count": 10,
+      "auto_increment": true
+    },
+    "resource_id": {
+      "data_type": "varchar",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 20
+    },
+    "subcategory": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 50
+    },
+    "updated_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "$indexes": [
+      {
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "uq_wcc_category",
+        "is_unique": true,
+        "fields": [
+          "category",
+          "subcategory"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      }
+    ]
+  },
+  "walmart_ca_category_has_attributes": {
+    "$comment": "",
+    "created_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "primary_key": true,
+      "character_count": 10,
+      "auto_increment": true
+    },
+    "required_level": {
+      "data_type": "varchar",
+      "character_count": 20
+    },
+    "resource_id": {
+      "data_type": "varchar",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 20
+    },
+    "updated_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "walmart_ca_attribute_id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 10,
+      "references": {
+        "walmart_ca_attributes": {
+          "id": {}
+        }
+      }
+    },
+    "walmart_ca_category_id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 10,
+      "references": {
+        "walmart_ca_categories": {
+          "id": {}
+        }
+      }
+    },
+    "$indexes": [
+      {
+        "index_name": "fk_wccha_attributes_idx",
+        "is_unique": false,
+        "fields": [
+          "walmart_ca_attribute_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "uq_wccha_category_attribute",
+        "is_unique": true,
+        "fields": [
+          "walmart_ca_category_id",
+          "walmart_ca_attribute_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      }
+    ]
+  },
+  "walmart_ca_variant_has_categories": {
+    "$comment": "",
+    "created_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "primary_key": true,
+      "character_count": 10,
+      "auto_increment": true
+    },
+    "resource_id": {
+      "data_type": "varchar",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 20
+    },
+    "updated_at": {
+      "data_type": "timestamp",
+      "not_null": true,
+      "default": "CURRENT_TIMESTAMP"
+    },
+    "variant_in_walmart_ca_id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 10,
+      "references": {
+        "variant_in_walmart_cas": {
+          "id": {}
+        }
+      }
+    },
+    "walmart_ca_category_id": {
+      "data_type": "int",
+      "not_null": true,
+      "indexed": true,
+      "character_count": 10,
+      "references": {
+        "walmart_ca_categories": {
+          "id": {}
+        }
+      }
+    },
+    "$indexes": [
+      {
+        "index_name": "fk_ciwc_variant_idx",
+        "is_unique": false,
+        "fields": [
+          "variant_in_walmart_ca_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_ciwc_walmart_categories_idx",
+        "is_unique": false,
+        "fields": [
+          "walmart_ca_category_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "uq_variant_category",
+        "is_unique": true,
+        "fields": [
+          "variant_in_walmart_ca_id",
+          "walmart_ca_category_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      }
+    ]
+  },
   "warehouses": {
     "$comment": "A list of vendor and no3rd warehouses",
     "address1": {
@@ -7645,7 +8696,8 @@ export const orma_schema = {
       "not_null": true,
       "indexed": true,
       "primary_key": true,
-      "character_count": 10
+      "character_count": 10,
+      "auto_increment": true
     },
     "is_no3rd_warehouse": {
       "data_type": "tinyint",
