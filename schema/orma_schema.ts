@@ -514,6 +514,16 @@ export const orma_schema = {
       "character_count": 10,
       "auto_increment": true
     },
+    "integration_id": {
+      "data_type": "int",
+      "indexed": true,
+      "character_count": 10,
+      "references": {
+        "integrations": {
+          "id": {}
+        }
+      }
+    },
     "resource_id": {
       "data_type": "varchar",
       "not_null": true,
@@ -529,7 +539,7 @@ export const orma_schema = {
       "data_type": "varchar",
       "not_null": true,
       "indexed": true,
-      "character_count": 45
+      "character_count": 1000
     },
     "vendor_id": {
       "data_type": "int",
@@ -543,6 +553,16 @@ export const orma_schema = {
       }
     },
     "$indexes": [
+      {
+        "index_name": "fk_attachments_integrations_idx",
+        "is_unique": false,
+        "fields": [
+          "integration_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
       {
         "index_name": "fk_attachments_vendors",
         "is_unique": false,
@@ -6704,6 +6724,11 @@ export const orma_schema = {
         }
       }
     },
+    "carrier": {
+      "data_type": "varchar",
+      "not_null": true,
+      "character_count": 45
+    },
     "created_at": {
       "data_type": "timestamp",
       "not_null": true,
@@ -6950,12 +6975,10 @@ export const orma_schema = {
     },
     "shipper.name": {
       "data_type": "varchar",
-      "not_null": true,
       "character_count": 100
     },
     "shipper.shipper_number": {
       "data_type": "varchar",
-      "not_null": true,
       "character_count": 100
     },
     "tracking_info_id": {
@@ -7708,6 +7731,9 @@ export const orma_schema = {
       "not_null": true,
       "character_count": 3,
       "default": "0"
+    },
+    "last_synced": {
+      "data_type": "timestamp"
     },
     "price": {
       "data_type": "decimal",
