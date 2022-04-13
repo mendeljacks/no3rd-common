@@ -59,42 +59,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "comb_uniq_ahr",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
-          "account_id",
-          "account_role_id",
-          "vendor_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_account_has_roles_account_roles1_idx",
-        "is_unique": false,
-        "fields": [
-          "account_role_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_account_has_roles_dashboardAccounts1_idx",
-        "is_unique": false,
-        "fields": [
-          "account_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_ahr_vendors_idx",
-        "is_unique": false,
-        "fields": [
-          "vendor_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -111,20 +79,52 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
+        "index_name": "comb_uniq_ahr",
         "is_unique": true,
         "fields": [
-          "resource_id"
+          "account_id",
+          "account_role_id",
+          "vendor_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_account_has_roles_dashboardAccounts1_idx",
+        "is_unique": false,
+        "fields": [
+          "account_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_account_has_roles_account_roles1_idx",
+        "is_unique": false,
+        "fields": [
+          "account_role_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_ahr_vendors_idx",
+        "is_unique": false,
+        "fields": [
+          "vendor_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -165,7 +165,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -175,7 +175,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -246,20 +246,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_account_role_has_permissions_account_permissions1_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "account_permission_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_account_role_has_permissions_account_roles1_idx",
-        "is_unique": false,
-        "fields": [
-          "account_role_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -276,10 +266,11 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "unique_arid_ap",
         "is_unique": true,
         "fields": [
-          "id"
+          "account_role_id",
+          "account_permission_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -296,11 +287,20 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "unique_arid_ap",
-        "is_unique": true,
+        "index_name": "fk_account_role_has_permissions_account_permissions1_idx",
+        "is_unique": false,
         "fields": [
-          "account_role_id",
           "account_permission_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_account_role_has_permissions_account_roles1_idx",
+        "is_unique": false,
+        "fields": [
+          "account_role_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -341,7 +341,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -351,7 +351,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -448,6 +448,16 @@ export const orma_schema = {
     },
     "$indexes": [
       {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "accountID_UNIQUE",
         "is_unique": true,
         "fields": [
@@ -468,30 +478,20 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "fk_dashboardAccounts_Vendors1_idx",
-        "is_unique": false,
-        "fields": [
-          "vendor_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "PRIMARY",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
         "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
           "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_dashboardAccounts_Vendors1_idx",
+        "is_unique": false,
+        "fields": [
+          "vendor_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -554,27 +554,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_attachments_integrations_idx",
-        "is_unique": false,
-        "fields": [
-          "integration_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_attachments_vendors",
-        "is_unique": false,
-        "fields": [
-          "vendor_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -584,7 +564,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -608,6 +588,26 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "url"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_attachments_vendors",
+        "is_unique": false,
+        "fields": [
+          "vendor_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_attachments_integrations_idx",
+        "is_unique": false,
+        "fields": [
+          "integration_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -668,7 +668,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -678,7 +678,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -754,17 +754,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "b_oi_idx",
-        "is_unique": false,
-        "fields": [
-          "order_item_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -774,7 +764,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -798,6 +788,16 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "box_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "b_oi_idx",
+        "is_unique": false,
+        "fields": [
+          "order_item_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -875,10 +875,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "box_order_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "order_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -895,20 +895,20 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "box_order_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "order_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -981,10 +981,30 @@ export const orma_schema = {
     },
     "$indexes": [
       {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1005,26 +1025,6 @@ export const orma_schema = {
         "is_unique": false,
         "fields": [
           "currency_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "PRIMARY",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1086,10 +1086,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_categories_categories_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "parent_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1106,6 +1106,16 @@ export const orma_schema = {
         "collation": "A"
       },
       {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "label_UNIQUE",
         "is_unique": true,
         "fields": [
@@ -1116,20 +1126,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
-        "is_unique": true,
+        "index_name": "fk_categories_categories_idx",
+        "is_unique": false,
         "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "resource_id"
+          "parent_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1207,20 +1207,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_chf_categories_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "category_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_chf_filters_idx",
-        "is_unique": false,
-        "fields": [
-          "attribute_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1237,10 +1227,11 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "unique_category_id_attribute_id",
         "is_unique": true,
         "fields": [
-          "id"
+          "category_id",
+          "attribute_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1257,10 +1248,19 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "unique_category_id_attribute_id",
-        "is_unique": true,
+        "index_name": "fk_chf_categories_idx",
+        "is_unique": false,
         "fields": [
-          "category_id",
+          "category_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_chf_filters_idx",
+        "is_unique": false,
+        "fields": [
           "attribute_id"
         ],
         "index_type": "BTREE",
@@ -1328,17 +1328,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_c_stores_idx",
-        "is_unique": false,
-        "fields": [
-          "store_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -1348,7 +1338,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -1368,6 +1358,17 @@ export const orma_schema = {
         "collation": "A"
       },
       {
+        "index_name": "uniq_category_store",
+        "is_unique": true,
+        "fields": [
+          "category_id",
+          "store_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "shopify_collection_id_UNIQUE",
         "is_unique": true,
         "fields": [
@@ -1378,10 +1379,9 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "uniq_category_store",
-        "is_unique": true,
+        "index_name": "fk_c_stores_idx",
+        "is_unique": false,
         "fields": [
-          "category_id",
           "store_id"
         ],
         "index_type": "BTREE",
@@ -1422,7 +1422,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -1432,7 +1432,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -1486,7 +1486,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "currency_id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -1496,7 +1496,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "currency_id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -1567,20 +1567,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "disbursement_adjustment_pending_id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
-          "disbursement_pending_adjustment_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_disbursement_disbursement_adjustment_idx",
-        "is_unique": false,
-        "fields": [
-          "disbursement_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1597,10 +1587,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "disbursement_adjustment_pending_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "disbursement_pending_adjustment_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1611,6 +1601,16 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_disbursement_disbursement_adjustment_idx",
+        "is_unique": false,
+        "fields": [
+          "disbursement_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1668,20 +1668,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_disbursement_colis_disbursements_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "disbursement_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_order_item_cancellation_idx",
-        "is_unique": false,
-        "fields": [
-          "order_item_cancellation_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1698,6 +1688,16 @@ export const orma_schema = {
         "collation": "A"
       },
       {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "order_item_cancellation_id_UNIQUE",
         "is_unique": true,
         "fields": [
@@ -1708,20 +1708,20 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
-        "is_unique": true,
+        "index_name": "fk_disbursement_colis_disbursements_idx",
+        "is_unique": false,
         "fields": [
-          "id"
+          "disbursement_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_order_item_cancellation_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "order_item_cancellation_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1779,20 +1779,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_dolis_disbursements_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "disbursement_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_dolis_order_line_items_idx",
-        "is_unique": false,
-        "fields": [
-          "order_item_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1819,20 +1809,30 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_dolis_disbursements_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "disbursement_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_dolis_order_line_items_idx",
+        "is_unique": false,
+        "fields": [
+          "order_item_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1910,20 +1910,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_dap_stores_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "store_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_dap_vendor_idx",
-        "is_unique": false,
-        "fields": [
-          "vendor_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -1940,20 +1930,30 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_dap_vendor_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "vendor_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_dap_stores_idx",
+        "is_unique": false,
+        "fields": [
+          "store_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2011,27 +2011,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_dpl_disbursements_idx",
-        "is_unique": false,
-        "fields": [
-          "disbursement_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_dpl_private_labels_idx",
-        "is_unique": false,
-        "fields": [
-          "private_label_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -2041,7 +2021,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -2065,6 +2045,26 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_dpl_disbursements_idx",
+        "is_unique": false,
+        "fields": [
+          "disbursement_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_dpl_private_labels_idx",
+        "is_unique": false,
+        "fields": [
+          "private_label_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2122,27 +2122,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_dr_disbursement_idx",
-        "is_unique": false,
-        "fields": [
-          "disbursement_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_dr_recall_idx",
-        "is_unique": false,
-        "fields": [
-          "recall_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -2152,7 +2132,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -2176,6 +2156,26 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_dr_recall_idx",
+        "is_unique": false,
+        "fields": [
+          "recall_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_dr_disbursement_idx",
+        "is_unique": false,
+        "fields": [
+          "disbursement_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2233,20 +2233,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_dr_r_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "refund_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_drefunds_disbursement_idx",
-        "is_unique": false,
-        "fields": [
-          "disbursement_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2263,20 +2253,30 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_drefunds_disbursement_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "disbursement_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_dr_r_idx",
+        "is_unique": false,
+        "fields": [
+          "refund_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2334,17 +2334,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_drelinquishes_disbursement_idx",
-        "is_unique": false,
-        "fields": [
-          "disbursement_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -2354,7 +2344,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -2378,6 +2368,16 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_drelinquishes_disbursement_idx",
+        "is_unique": false,
+        "fields": [
+          "disbursement_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2435,26 +2435,6 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "dsfsf_idx",
-        "is_unique": false,
-        "fields": [
-          "storage_fee_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
         "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
@@ -2475,10 +2455,30 @@ export const orma_schema = {
         "collation": "A"
       },
       {
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "sf_d_idx",
         "is_unique": false,
         "fields": [
           "disbursement_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "dsfsf_idx",
+        "is_unique": false,
+        "fields": [
+          "storage_fee_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2541,20 +2541,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_disbursements_stores_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "store_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_disbursements_vendors_idx",
-        "is_unique": false,
-        "fields": [
-          "vendor_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2571,20 +2561,30 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_disbursements_vendors_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "vendor_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_disbursements_stores_idx",
+        "is_unique": false,
+        "fields": [
+          "store_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2637,6 +2637,26 @@ export const orma_schema = {
     },
     "$indexes": [
       {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "shopify_fulfillment_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "shopify_fulfillment_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "fulfillment_id_UNIQUE",
         "is_unique": true,
         "fields": [
@@ -2657,30 +2677,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
         "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
           "resource_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "shopify_fulfillment_id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "shopify_fulfillment_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2742,11 +2742,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "combo_unique_store_image",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
-          "image_id",
-          "store_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2763,20 +2762,21 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
+        "index_name": "combo_unique_store_image",
         "is_unique": true,
         "fields": [
-          "resource_id"
+          "image_id",
+          "store_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2849,10 +2849,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_images_variant_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "variant_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2869,20 +2869,20 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_images_variant_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "variant_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2952,7 +2952,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -2962,10 +2962,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "ig_i_idx",
-        "is_unique": false,
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
         "fields": [
-          "integration_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -2982,20 +2982,20 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "ig_i_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "integration_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3065,10 +3065,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_is_i_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "integration_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3085,20 +3085,20 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_is_i_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "integration_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3155,6 +3155,16 @@ export const orma_schema = {
     },
     "$indexes": [
       {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
@@ -3169,16 +3179,6 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "integration_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "PRIMARY",
-        "is_unique": true,
-        "fields": [
-          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3250,6 +3250,16 @@ export const orma_schema = {
     },
     "$indexes": [
       {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
@@ -3264,16 +3274,6 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "integration_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "PRIMARY",
-        "is_unique": true,
-        "fields": [
-          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3346,26 +3346,6 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_inups_inte_idx",
-        "is_unique": false,
-        "fields": [
-          "integration_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
         "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
@@ -3390,6 +3370,26 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "username"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_inups_inte_idx",
+        "is_unique": false,
+        "fields": [
+          "integration_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3451,10 +3451,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_iwc_int_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "integration_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3471,20 +3471,20 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_iwc_int_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "integration_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3536,7 +3536,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -3546,17 +3546,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "integration_vendor_idx",
-        "is_unique": false,
-        "fields": [
-          "vendor_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -3570,6 +3560,16 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "integration_vendor_idx",
+        "is_unique": false,
+        "fields": [
+          "vendor_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3657,20 +3657,30 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_ia_accounts_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "adjusted_by"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "fk_ia_shelves_idx",
-        "is_unique": false,
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
         "fields": [
-          "shelf_id"
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3697,30 +3707,20 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_ia_shelves_idx",
+        "is_unique": false,
         "fields": [
-          "id"
+          "shelf_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
-        "is_unique": true,
+        "index_name": "fk_ia_accounts_idx",
+        "is_unique": false,
         "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "resource_id"
+          "adjusted_by"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3804,10 +3804,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_jobs_1_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "vendor_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3824,20 +3824,20 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_jobs_1_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "vendor_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3892,10 +3892,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_3pli_o_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "order_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -3912,6 +3912,16 @@ export const orma_schema = {
         "collation": "A"
       },
       {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "order_id_UNIQUE",
         "is_unique": true,
         "fields": [
@@ -3922,20 +3932,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
-        "is_unique": true,
+        "index_name": "fk_3pli_o_idx",
+        "is_unique": false,
         "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "resource_id"
+          "order_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4002,10 +4002,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_3pl_oli_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "order_item_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4032,20 +4032,20 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_3pl_oli_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "order_item_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4101,6 +4101,16 @@ export const orma_schema = {
     },
     "$indexes": [
       {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
@@ -4115,16 +4125,6 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "order_item_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "PRIMARY",
-        "is_unique": true,
-        "fields": [
-          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4201,18 +4201,38 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_fli_box_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "box_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "fk_fli_ia_idx",
-        "is_unique": false,
+        "index_name": "fli_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "inventory_adjustment_id_UNIQUE",
+        "is_unique": true,
         "fields": [
           "inventory_adjustment_id"
         ],
@@ -4231,40 +4251,20 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "fli_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_fli_box_idx",
+        "is_unique": false,
         "fields": [
-          "id"
+          "box_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "inventory_adjustment_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_fli_ia_idx",
+        "is_unique": false,
         "fields": [
           "inventory_adjustment_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "PRIMARY",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4360,10 +4360,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_oli_olimi_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "order_item_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4380,10 +4380,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
-        "is_unique": true,
+        "index_name": "fk_oli_olimi_idx",
+        "is_unique": false,
         "fields": [
-          "id"
+          "order_item_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4449,20 +4449,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_rli_oli_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "order_item_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_rli_return_requests_idx",
-        "is_unique": false,
-        "fields": [
-          "return_request_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4479,20 +4469,30 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_rli_oli_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "order_item_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_rli_return_requests_idx",
+        "is_unique": false,
+        "fields": [
+          "return_request_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4555,20 +4555,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_order_line_items_orders_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "order_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_order_line_items_variants_idx",
-        "is_unique": false,
-        "fields": [
-          "variant_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4585,20 +4575,30 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_order_line_items_variants_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "variant_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_order_line_items_orders_idx",
+        "is_unique": false,
+        "fields": [
+          "order_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4666,10 +4666,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_omi_o_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "order_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4696,16 +4696,6 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
         "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
@@ -4720,6 +4710,16 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "shopify_order_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_omi_o_idx",
+        "is_unique": false,
+        "fields": [
+          "order_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4847,30 +4847,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_integration_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "integration_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_orders_provinces_idx",
-        "is_unique": false,
-        "fields": [
-          "province_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_orders_stores_idx",
-        "is_unique": false,
-        "fields": [
-          "store_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4887,6 +4867,16 @@ export const orma_schema = {
         "collation": "A"
       },
       {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "name_UNIQUE",
         "is_unique": true,
         "fields": [
@@ -4897,20 +4887,30 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
-        "is_unique": true,
+        "index_name": "fk_orders_stores_idx",
+        "is_unique": false,
         "fields": [
-          "id"
+          "store_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_orders_provinces_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "province_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_integration_idx",
+        "is_unique": false,
+        "fields": [
+          "integration_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4968,20 +4968,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_payments_cashflows_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "from_cashflow_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_payments_to_idx",
-        "is_unique": false,
-        "fields": [
-          "to_cashflow_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -4998,20 +4988,30 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_payments_cashflows_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "from_cashflow_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_payments_to_idx",
+        "is_unique": false,
+        "fields": [
+          "to_cashflow_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5076,27 +5076,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_pis_product_idx",
-        "is_unique": false,
-        "fields": [
-          "product_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_pis_store_idx",
-        "is_unique": false,
-        "fields": [
-          "store_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -5106,7 +5086,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -5141,6 +5121,26 @@ export const orma_schema = {
         "fields": [
           "product_id",
           "store_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_pis_store_idx",
+        "is_unique": false,
+        "fields": [
+          "store_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_pis_product_idx",
+        "is_unique": false,
+        "fields": [
+          "product_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5201,10 +5201,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_products_vendors_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "vendor_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5221,20 +5221,20 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_products_vendors_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "vendor_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5297,10 +5297,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_p_c_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "country_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5327,10 +5327,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "two_letter_code_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "two_letter_code"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5347,10 +5347,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "two_letter_code_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_p_c_idx",
+        "is_unique": false,
         "fields": [
-          "two_letter_code"
+          "country_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5397,16 +5397,6 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
         "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
@@ -5417,10 +5407,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "resource_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5431,6 +5421,16 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "order_item_return_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5477,16 +5477,6 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
         "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
@@ -5497,10 +5487,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "resource_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5511,6 +5501,16 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "order_item_return_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5572,16 +5572,6 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
         "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
@@ -5592,10 +5582,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "resource_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5606,6 +5596,16 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "order_item_return_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5659,7 +5659,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -5669,7 +5669,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -5745,20 +5745,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "barcode_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
-          "barcode"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_shelves_warehouses_idx",
-        "is_unique": false,
-        "fields": [
-          "warehouse_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5775,10 +5765,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "barcode_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "barcode"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5789,6 +5779,16 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_shelves_warehouses_idx",
+        "is_unique": false,
+        "fields": [
+          "warehouse_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5851,6 +5851,36 @@ export const orma_schema = {
     },
     "$indexes": [
       {
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "line_item_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "combo_si_s_v",
         "is_unique": true,
         "fields": [
@@ -5876,36 +5906,6 @@ export const orma_schema = {
         "is_unique": false,
         "fields": [
           "variant_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "line_item_id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "PRIMARY",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -5963,8 +5963,38 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_slir_ia_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "inventory_adjustment_id_UNIQUE",
+        "is_unique": true,
         "fields": [
           "inventory_adjustment_id"
         ],
@@ -5983,40 +6013,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "inventory_adjustment_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_slir_ia_idx",
+        "is_unique": false,
         "fields": [
           "inventory_adjustment_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "PRIMARY",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -6146,47 +6146,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_shipments_stores_idx",
-        "is_unique": false,
-        "fields": [
-          "store_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_shipments_vendors_idx",
-        "is_unique": false,
-        "fields": [
-          "vendor_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_shipments_warehouse_dest_idx",
-        "is_unique": false,
-        "fields": [
-          "warehouse_id_dest"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_shipments_warehouse_origin_idx",
-        "is_unique": false,
-        "fields": [
-          "warehouse_id_origin"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -6196,17 +6156,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "name_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "name"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -6231,6 +6181,56 @@ export const orma_schema = {
         "fields": [
           "vendor_id",
           "name"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "name_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "name"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_shipments_vendors_idx",
+        "is_unique": false,
+        "fields": [
+          "vendor_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_shipments_stores_idx",
+        "is_unique": false,
+        "fields": [
+          "store_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_shipments_warehouse_dest_idx",
+        "is_unique": false,
+        "fields": [
+          "warehouse_id_dest"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_shipments_warehouse_origin_idx",
+        "is_unique": false,
+        "fields": [
+          "warehouse_id_origin"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -6314,17 +6314,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_sl_boxes_idx",
-        "is_unique": false,
-        "fields": [
-          "box_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -6334,7 +6324,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -6358,6 +6348,16 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "tracking_number"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_sl_boxes_idx",
+        "is_unique": false,
+        "fields": [
+          "box_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -6442,27 +6442,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_sf_variants_idx",
-        "is_unique": false,
-        "fields": [
-          "variant_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_sf_warehouses_idx",
-        "is_unique": false,
-        "fields": [
-          "warehouse_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -6472,7 +6452,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -6498,6 +6478,26 @@ export const orma_schema = {
           "variant_id",
           "warehouse_id",
           "date"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_sf_variants_idx",
+        "is_unique": false,
+        "fields": [
+          "variant_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_sf_warehouses_idx",
+        "is_unique": false,
+        "fields": [
+          "warehouse_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -6563,20 +6563,30 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "name_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
-          "name"
+          "store_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "store_id_UNIQUE",
         "is_unique": true,
         "fields": [
           "store_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "name_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "name"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -6607,16 +6617,6 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "shopify_location_id_no3rd"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "store_id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "store_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -6669,11 +6669,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "combo_uniq",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
-          "tag",
-          "description"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -6690,20 +6689,21 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
+        "index_name": "combo_uniq",
         "is_unique": true,
         "fields": [
-          "resource_id"
+          "tag",
+          "description"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -6766,17 +6766,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_tracking_attachment_idx",
-        "is_unique": false,
-        "fields": [
-          "attachment_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -6786,7 +6776,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -6810,6 +6800,16 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "tracking_number"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_tracking_attachment_idx",
+        "is_unique": false,
+        "fields": [
+          "attachment_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -6999,7 +6999,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -7009,7 +7009,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -7094,27 +7094,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_vhf_filters_idx",
-        "is_unique": false,
-        "fields": [
-          "attribute_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_vhf_variants_idx",
-        "is_unique": false,
-        "fields": [
-          "variant_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -7124,7 +7104,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -7148,6 +7128,26 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "variant_id",
+          "attribute_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_vhf_variants_idx",
+        "is_unique": false,
+        "fields": [
+          "variant_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_vhf_filters_idx",
+        "is_unique": false,
+        "fields": [
           "attribute_id"
         ],
         "index_type": "BTREE",
@@ -7210,20 +7210,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_vhc_categories_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "category_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_vhc_variants_idx",
-        "is_unique": false,
-        "fields": [
-          "variant_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -7234,6 +7224,27 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "unique_variant_id_category_id",
+        "is_unique": true,
+        "fields": [
+          "variant_id",
+          "category_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -7251,30 +7262,19 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
-        "is_unique": true,
+        "index_name": "fk_vhc_variants_idx",
+        "is_unique": false,
         "fields": [
-          "id"
+          "variant_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_vhc_categories_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "unique_variant_id_category_id",
-        "is_unique": true,
-        "fields": [
-          "variant_id",
           "category_id"
         ],
         "index_type": "BTREE",
@@ -7349,27 +7349,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_vig_i_idx",
-        "is_unique": false,
-        "fields": [
-          "integration_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_vig_v_idx",
-        "is_unique": false,
-        "fields": [
-          "variant_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -7379,7 +7359,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -7406,6 +7386,26 @@ export const orma_schema = {
           "variant_id",
           "goflow_item_id",
           "goflow_item_number"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_vig_i_idx",
+        "is_unique": false,
+        "fields": [
+          "integration_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_vig_v_idx",
+        "is_unique": false,
+        "fields": [
+          "variant_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -7474,17 +7474,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_vis_v_idx",
-        "is_unique": false,
-        "fields": [
-          "variant_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -7494,7 +7484,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -7520,6 +7510,16 @@ export const orma_schema = {
           "integration_id",
           "variant_id",
           "sellercloud_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_vis_v_idx",
+        "is_unique": false,
+        "fields": [
+          "variant_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -7638,20 +7638,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_vins_stores_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "store_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_vins_variants_idx",
-        "is_unique": false,
-        "fields": [
-          "variant_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -7668,10 +7658,11 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "unique_variant_id_store_id",
         "is_unique": true,
         "fields": [
-          "id"
+          "variant_id",
+          "store_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -7688,10 +7679,19 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "unique_variant_id_store_id",
-        "is_unique": true,
+        "index_name": "fk_vins_variants_idx",
+        "is_unique": false,
         "fields": [
-          "variant_id",
+          "variant_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_vins_stores_idx",
+        "is_unique": false,
+        "fields": [
           "store_id"
         ],
         "index_type": "BTREE",
@@ -7774,32 +7774,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_viwc_combo",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
-          "integration_id",
-          "variant_id",
-          "walmart_sku"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_viwc_inte_idx",
-        "is_unique": false,
-        "fields": [
-          "integration_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_viwc_v_idx",
-        "is_unique": false,
-        "fields": [
-          "variant_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -7816,20 +7794,42 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
+        "index_name": "fk_viwc_combo",
         "is_unique": true,
         "fields": [
-          "resource_id"
+          "integration_id",
+          "variant_id",
+          "walmart_sku"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_viwc_v_idx",
+        "is_unique": false,
+        "fields": [
+          "variant_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_viwc_inte_idx",
+        "is_unique": false,
+        "fields": [
+          "integration_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -7947,30 +7947,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "asin_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
-          "asin"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "barcode_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "barcode"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_variants_products_idx",
-        "is_unique": false,
-        "fields": [
-          "product_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -7987,10 +7967,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "sku_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "sku"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -8007,10 +7987,30 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "sku_UNIQUE",
+        "index_name": "barcode_UNIQUE",
         "is_unique": true,
         "fields": [
-          "sku"
+          "barcode"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "asin_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "asin"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_variants_products_idx",
+        "is_unique": false,
+        "fields": [
+          "product_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -8068,7 +8068,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -8078,7 +8078,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -8098,6 +8098,17 @@ export const orma_schema = {
         "collation": "A"
       },
       {
+        "index_name": "vhc_combo",
+        "is_unique": true,
+        "fields": [
+          "vendor_id",
+          "account_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
         "index_name": "vha_vendor_id_idx",
         "is_unique": false,
         "fields": [
@@ -8111,17 +8122,6 @@ export const orma_schema = {
         "index_name": "vhac_account_id_idx",
         "is_unique": false,
         "fields": [
-          "account_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "vhc_combo",
-        "is_unique": true,
-        "fields": [
-          "vendor_id",
           "account_id"
         ],
         "index_type": "BTREE",
@@ -8225,17 +8225,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_vendors_provinces_idx",
-        "is_unique": false,
-        "fields": [
-          "tax_province_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -8245,7 +8235,17 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "vendorName_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "vendor_name"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -8265,10 +8265,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "vendorName_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_vendors_provinces_idx",
+        "is_unique": false,
         "fields": [
-          "vendor_name"
+          "tax_province_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -8349,7 +8349,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -8359,7 +8359,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -8430,16 +8430,6 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "id_UNIQUE",
-        "is_unique": true,
-        "fields": [
-          "id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
         "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
@@ -8450,10 +8440,10 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "resource_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -8465,6 +8455,16 @@ export const orma_schema = {
         "fields": [
           "category",
           "subcategory"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "resource_id_UNIQUE",
+        "is_unique": true,
+        "fields": [
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -8526,17 +8526,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_wccha_attributes_idx",
-        "is_unique": false,
-        "fields": [
-          "walmart_ca_attribute_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -8546,7 +8536,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -8570,6 +8560,16 @@ export const orma_schema = {
         "is_unique": true,
         "fields": [
           "walmart_ca_category_id",
+          "walmart_ca_attribute_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_wccha_attributes_idx",
+        "is_unique": false,
+        "fields": [
           "walmart_ca_attribute_id"
         ],
         "index_type": "BTREE",
@@ -8628,27 +8628,7 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_ciwc_variant_idx",
-        "is_unique": false,
-        "fields": [
-          "variant_in_walmart_ca_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_ciwc_walmart_categories_idx",
-        "is_unique": false,
-        "fields": [
-          "walmart_ca_category_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "id_UNIQUE",
+        "index_name": "PRIMARY",
         "is_unique": true,
         "fields": [
           "id"
@@ -8658,7 +8638,7 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "id_UNIQUE",
         "is_unique": true,
         "fields": [
           "id"
@@ -8683,6 +8663,26 @@ export const orma_schema = {
         "fields": [
           "variant_in_walmart_ca_id",
           "walmart_ca_category_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_ciwc_walmart_categories_idx",
+        "is_unique": false,
+        "fields": [
+          "walmart_ca_category_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_ciwc_variant_idx",
+        "is_unique": false,
+        "fields": [
+          "variant_in_walmart_ca_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -8781,20 +8781,10 @@ export const orma_schema = {
     },
     "$indexes": [
       {
-        "index_name": "fk_warehouse_vendor_idx",
-        "is_unique": false,
+        "index_name": "PRIMARY",
+        "is_unique": true,
         "fields": [
-          "vendor_id"
-        ],
-        "index_type": "BTREE",
-        "invisible": false,
-        "collation": "A"
-      },
-      {
-        "index_name": "fk_warehouses_provinces_idx",
-        "is_unique": false,
-        "fields": [
-          "province_id"
+          "id"
         ],
         "index_type": "BTREE",
         "invisible": false,
@@ -8811,20 +8801,30 @@ export const orma_schema = {
         "collation": "A"
       },
       {
-        "index_name": "PRIMARY",
+        "index_name": "resource_id_UNIQUE",
         "is_unique": true,
         "fields": [
-          "id"
+          "resource_id"
         ],
         "index_type": "BTREE",
         "invisible": false,
         "collation": "A"
       },
       {
-        "index_name": "resource_id_UNIQUE",
-        "is_unique": true,
+        "index_name": "fk_warehouse_vendor_idx",
+        "is_unique": false,
         "fields": [
-          "resource_id"
+          "vendor_id"
+        ],
+        "index_type": "BTREE",
+        "invisible": false,
+        "collation": "A"
+      },
+      {
+        "index_name": "fk_warehouses_provinces_idx",
+        "is_unique": false,
+        "fields": [
+          "province_id"
         ],
         "index_type": "BTREE",
         "invisible": false,

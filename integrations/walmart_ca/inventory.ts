@@ -80,7 +80,7 @@ export const get_walmart_request = (
                     unit: 'EACH',
                     amount: quantity,
                 },
-                fulfillmentLagTime: 2,
+                fulfillmentLagTime: 1,
             }
         })
     })
