@@ -7,12 +7,12 @@ export const get_changed_variant_ids_query = (last_updated: string) => {
             select: 'id',
             where: {
                 and: [
-                    {
-                        any: [
-                            'variant_in_walmart_cas',
-                            { eq: ['is_active', 1] },
-                        ],
-                    },
+                    // {
+                    //     any: [
+                    //         'variant_in_walmart_cas',
+                    //         { eq: ['is_active', 1] },
+                    //     ],
+                    // },
                     {
                         or: [
                             {
