@@ -1,6 +1,6 @@
 {
     "name": "no3rd-common",
-    "version": "1.0.33",
+    "version": "1.0.34",
     "description": "Business logic and utilities for use accross no3rd projects",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",

@@ -69,7 +69,7 @@ export const get_walmart_request = (
     }
 
     const walmart_inventory = variants.flatMap((variant) => {
-        return variant.variant_in_walmart_cas.map((el, i) => {
+        return variant.variant_in_walmart_cas?.map((el, i) => {
             const sku = variant.variant_in_walmart_cas[i].walmart_sku
             const quantity =
                 variant.inventory_adjustments?.[0]?.sum_quantity || 0
@@ -82,7 +82,7 @@ export const get_walmart_request = (
                 },
                 fulfillmentLagTime: 1,
             }
-        })
+        }) ?? []
     })
 
     const body = Buffer.from(
