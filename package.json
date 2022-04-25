@@ -1,11 +1,10 @@
 {
     "name": "no3rd-common",
-    "version": "1.0.34",
+    "version": "1.0.36",
     "description": "Business logic and utilities for use accross no3rd projects",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
         "prepare": "husky install",
-        "bump": "npm version patch --no-git-tag-version && git add package*.json && npm publish"
+        "bump": "tsc && npm version patch --no-git-tag-version && git add package*.json && npm publish"
     },
     "author": "",
     "license": "ISC",

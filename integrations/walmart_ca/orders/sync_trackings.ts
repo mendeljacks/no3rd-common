@@ -2,7 +2,10 @@ import * as dayjs from 'dayjs'
 import * as dayjs_utc from 'dayjs/plugin/utc'
 import * as walmart from 'walmart_marketplace'
 import { lir_join } from 'yay_json'
-import { AxiosFunction, No3rdQueryFunction } from '../../../types/request_function_types'
+import {
+    AxiosFunction,
+    No3rdQueryFunction,
+} from '../../../types/request_function_types'
 import { WalmartOrder } from './convert/walmart_to_no3rd_order'
 import { Options } from './import_walmart_orders'
 dayjs.extend(dayjs_utc)
@@ -20,20 +23,23 @@ export const get_no3rd_orders_by_name_with_trackings = async (
                 variants: {
                     select: ['id'],
                     variant_in_walmart_cas: {
-                        select: ['variant_id', 'walmart_sku']
-                    }
-                }
+                        select: ['variant_id', 'walmart_sku'],
+                    },
+                },
             },
             boxes: {
                 select: ['id'],
                 shipping_labels: {
-                    select: ['tracking_number', 'carrier', 'created_at']
-                }
+                    select: ['tracking_number', 'carrier', 'created_at'],
+                },
             },
             where: {
-                and: [{ in: ['name', names] }, { eq: ['integration_id', integration_id] }]
-            }
-        }
+                and: [
+                    { in: ['name', names] },
+                    { eq: ['integration_id', integration_id] },
+                ],
+            },
+        },
     }
     const { orders } = await no3rd_query(query)
     return orders
@@ -44,7 +50,8 @@ export const sync_trackings = async (
     axios: AxiosFunction,
     walmart_auth: any,
     walmart_orders: WalmartOrder[],
-    integration_id: number
+    integration_id: number,
+    walmart_connector: ({ method: string, params: any }) => Promise<any>
 ) => {
     // Fetch
     const order_names = walmart_orders.map((el) => el.purchaseOrderId)
@@ -113,22 +120,25 @@ export const sync_trackings = async (
         }
 
         // // Update tracking
-        const request = walmart.shipping_updates_ca(
-            walmart_auth,
-            { purchaseOrderId: walmart_order.purchaseOrderId },
-            {
-                // @ts-ignore
-                orderShipment: {
-                    orderLines: {
-                        orderLine: no3rd_boxes_to_walmart_order_lines(
-                            matched_order_items,
-                            no3rd_order
-                        ),
+        const request = walmart_connector({
+            method: 'shipping_updates_ca',
+            params: [
+                walmart_auth,
+                { purchaseOrderId: walmart_order.purchaseOrderId },
+                {
+                    // @ts-ignore
+                    orderShipment: {
+                        orderLines: {
+                            orderLine: no3rd_boxes_to_walmart_order_lines(
+                                matched_order_items,
+                                no3rd_order
+                            ),
+                        },
                     },
                 },
-            },
-            { 'Content-Type': 'application/json' }
-        )
+                { 'Content-Type': 'application/json' },
+            ],
+        })
 
         const response: { data: { list: walmart.shipping_updates_ca_type } } =
             await axios(request)

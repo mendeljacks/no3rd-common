@@ -27,7 +27,8 @@ export const import_walmart_orders = async (
     walmart_auth: any,
     walmart_orders: WalmartOrder[],
     store_id: number,
-    integration_id: number
+    integration_id: number,
+    walmart_connector: ({ method: string, params: any }) => Promise<any>
 ): Promise<string> => {
     // Fetch
     const { walmart_orders_to_create, provinces, variant_in_walmart_cas } =
@@ -89,14 +90,16 @@ export const import_walmart_orders = async (
             continue // Order is already acknowledged
         }
 
-        let request = walmart.acknowledge_orders_ca(
-            walmart_auth,
-            {
-                purchaseOrderId: walmart_order_to_create.purchaseOrderId,
-            },
-            {}
-        )
-        // request.headers.contentType = 'application/json'
+        let request = walmart_connector({
+            method: 'acknowledge_orders_ca',
+            params: [
+                walmart_auth,
+                {
+                    purchaseOrderId: walmart_order_to_create.purchaseOrderId,
+                },
+                {},
+            ],
+        })
 
         const response: { data: { list: walmart.acknowledge_orders_ca_type } } =
             await axios({ ...request, data: {} })

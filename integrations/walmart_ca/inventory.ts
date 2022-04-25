@@ -56,7 +56,8 @@ export const get_variants_query = (variant_ids: number[]) => {
 export const get_walmart_request = (
     variant_ids: number[],
     variants: any[],
-    walmart_auth: any
+    walmart_auth: any,
+    walmart_connector: ({ method: string, params: any }) => Promise<any>
 ) => {
     // Complain if some variants are unmapped
     const unmapped_variants = variant_ids.filter(
@@ -92,12 +93,11 @@ export const get_walmart_request = (
         })
     )
     const headers: any = { accept: 'application/json' }
-    const walmart_request = walmart.update_bulk_inventory(
-        walmart_auth,
-        { feedType: 'inventory' },
-        body,
-        headers
-    )
+
+    const walmart_request = walmart_connector({
+        method: 'update_bulk_inventory',
+        params: [walmart_auth, { feedType: 'inventory' }, body, headers],
+    })
 
     return { walmart_request, walmart_inventory }
 }
