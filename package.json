@@ -1,6 +1,6 @@
 {
     "name": "no3rd-common",
-    "version": "1.0.36",
+    "version": "1.0.37",
     "description": "Business logic and utilities for use accross no3rd projects",
     "scripts": {
         "prepare": "husky install",

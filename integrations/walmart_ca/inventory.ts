@@ -53,7 +53,7 @@ export const get_variants_query = (variant_ids: number[]) => {
     }
 }
 
-export const get_walmart_request = (
+export const get_walmart_request = async (
     variant_ids: number[],
     variants: any[],
     walmart_auth: any,
@@ -94,7 +94,7 @@ export const get_walmart_request = (
     )
     const headers: any = { accept: 'application/json' }
 
-    const walmart_request = walmart_connector({
+    const walmart_request = await walmart_connector({
         method: 'update_bulk_inventory',
         params: [walmart_auth, { feedType: 'inventory' }, body, headers],
     })

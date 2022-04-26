@@ -90,7 +90,7 @@ export const import_walmart_orders = async (
             continue // Order is already acknowledged
         }
 
-        let request = walmart_connector({
+        let request = await walmart_connector({
             method: 'acknowledge_orders_ca',
             params: [
                 walmart_auth,

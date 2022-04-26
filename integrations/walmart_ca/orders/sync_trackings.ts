@@ -120,7 +120,7 @@ export const sync_trackings = async (
         }
 
         // // Update tracking
-        const request = walmart_connector({
+        const request = await walmart_connector({
             method: 'shipping_updates_ca',
             params: [
                 walmart_auth,
